@@ -1,0 +1,125 @@
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Courier New", monospace;
+}
+
+/* BACKGROUND */
+body {
+    height: 100vh;
+    background:
+        linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.2)),
+        url("/static/img/hackerBack.png"); /* image background */
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #00ff88;
+}
+
+/* CONTAINER */
+.container {
+    background: rgba(0, 0, 0, 0.75);
+    padding: 35px 30px;
+    border-radius: 20px;
+    text-align: center;
+    width: 380px;
+    box-shadow:
+        0 0 20px #00ff88,
+        0 0 60px rgba(0,255,136,0.3);
+    animation: fadeIn 1.2s ease;
+}
+
+/* LOGO */
+.logo {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    border: 3px solid #00ff88;
+    box-shadow: 0 0 20px #00ff88;
+    margin-bottom: 15px;
+    animation: pulse 2.5s infinite;
+}
+
+/* TITLE */
+h1 {
+    margin-bottom: 20px;
+    font-size: 22px;
+    text-shadow: 0 0 10px #00ff88;
+}
+
+/* INPUT */
+input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 30px;
+    border: 1px solid #00ff88;
+    background: #000;
+    color: #00ff88;
+    margin-bottom: 15px;
+    outline: none;
+    transition: 0.4s;
+}
+
+input::placeholder {
+    color: #009955;
+}
+
+input:focus {
+    box-shadow: 0 0 15px #00ff88;
+}
+
+/* BUTTON */
+button {
+    width: 100%;
+    padding: 12px;
+    border-radius: 30px;
+    border: none;
+    background: #00ff88;
+    color: #000;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.4s;
+    box-shadow: 0 0 15px #00ff88;
+}
+
+button:hover {
+    background: #003a20;
+    color: #00ff88;
+    box-shadow: 0 0 25px #00ff88;
+    transform: scale(1.05);
+}
+
+/* RESULT */
+#result {
+    margin-top: 20px;
+    font-size: 16px;
+    text-shadow: 0 0 8px #00ff88;
+}
+
+/* ANIMATIONS */
+@keyframes pulse {
+    0% { box-shadow: 0 0 10px #00ff88; }
+    50% { box-shadow: 0 0 30px #00ff88; }
+    100% { box-shadow: 0 0 10px #00ff88; }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* 📱 MOBILE RESPONSIVE */
+@media (max-width: 480px) {
+    .container {
+        width: 90%;
+        padding: 25px;
+    }
+
+    h1 {
+        font-size: 18px;
+    }
+}
