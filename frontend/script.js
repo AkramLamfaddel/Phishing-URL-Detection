@@ -7,12 +7,22 @@ async function checkURL() {
         return;
     }
 
-    const response = await fetch("http://127.0.0.1:8000/predict", {
-        method: "POST",
-        headers: {"Content-Type": "application/json"},
-        body: JSON.stringify({ url: url })
-    });
+    try {
+        const baseURL = window.location.origin;
+        const response = await fetch(`${baseURL}/predict`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ url: url })
+        });
 
-    const data = await response.json();
-    resultDiv.innerText = `Prediction: ${data.prediction} (Confidence: ${data.confidence})`;
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        resultDiv.innerText = `Prediction: ${data.prediction} (Confidence: ${data.confidence})`;
+    } catch (error) {
+        console.error("Error fetching prediction:", error);
+        resultDiv.innerText = "Failed to fetch prediction. Check console for details.";
+    }
 }
