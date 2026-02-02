@@ -8,7 +8,7 @@ import math
 from collections import Counter
 import joblib
 import os
-
+from urllib.parse import urlparse
 
 model_path = os.path.join(os.path.dirname(__file__), "model", "phishing_rf_model.pkl")
 model = joblib.load(model_path)
@@ -62,13 +62,25 @@ def extract_features(url):
     return pd.DataFrame([features])
 
 
+def normalize_url(url: str) -> str:
+    """
+    Normalise l'URL pour que le modèle ne soit pas trompé par des slash ou 'www.'
+    """
+    parsed = urlparse(url)
+    scheme = parsed.scheme.lower()
+    netloc = parsed.netloc.lower().replace("www.", "")
+    path = parsed.path.rstrip("/")  # supprime le slash final
+    normalized = f"{scheme}://{netloc}{path}"
+    return normalized
+
 @app.post("/predict")
 def predict(item: URLItem):
-    features_df = extract_features(item.url)
+    normalized_url = normalize_url(item.url)  
+    features_df = extract_features(normalized_url)
     prediction = model.predict(features_df)[0]
     proba = model.predict_proba(features_df)[0][prediction]
     label = "Phishing" if prediction == 1 else "Legitimate"
-    return {"url": item.url, "prediction": label, "confidence": round(proba, 3)}
+    return {"url": item.url, "normalized_url": normalized_url, "prediction": label, "confidence": round(proba, 3)}
 
 frontend_path = os.path.join(os.path.dirname(__file__), "..", "frontend")
 app.mount("/static", StaticFiles(directory=frontend_path), name="static")
