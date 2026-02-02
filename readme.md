@@ -259,3 +259,9 @@ Machine Learning & Web Developer
 
 ⚠️ Disclaimer: This project is for educational and research purposes only.
 
+## 📄 License
+
+This project is licensed under the MIT License.
+
+
+
