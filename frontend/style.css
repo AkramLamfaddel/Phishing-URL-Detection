@@ -11,7 +11,7 @@ body {
     height: 100vh;
     background:
         linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.2)),
-        url("/static/img/hackerBack.png"); /* image background */
+        url("img/hackerBack.png"); /* image background */
     background-size: cover;
     background-position: center;
     display: flex;
