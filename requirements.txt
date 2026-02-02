@@ -1,0 +1,17 @@
+# Data manipulation
+pandas>=2.0.0
+
+# Machine Learning
+scikit-learn>=1.3.0
+joblib>=1.3.0
+
+# Web API
+fastapi>=0.128.0
+uvicorn>=0.40.0
+
+# Optional: For type hints and validation
+pydantic>=2.12.5
+typing-extensions>=4.15.0
+
+# Optional: For regex, math operations (built-in)
+# (no need to install)
