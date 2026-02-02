@@ -39,9 +39,25 @@ A complete **Machine Learning pipeline** for detecting **phishing URLs**, from e
 
 Before running any script, make sure you have **Python 3.9+** installed.
 
-Install all required dependencies:
+# 1️⃣ Create a virtual environment (venv)
+```
+python -m venv venv
+```
 
-```bash
+Activate the virtual environment:
+
+Windows
+```
+venv\Scripts\activate
+```
+
+Linux / macOS
+```
+source venv/bin/activate
+```
+
+## 2️⃣ Install required dependencies
+```
 pip install -r requirements.txt
 ```
 
